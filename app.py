@@ -8,8 +8,8 @@ db = SQLAlchemy(app)
 
 
 class Produto(db.Model):
-    id = db.Column('id', db.Integer(), primary_key=True)
-    descricao = db.Column(db.String(150))
+    id = db.Column('id', db.Integer, primary_key=True)
+    descricao = db.Column(db.String(100))
     preco = db.Column(db.Float)
 
     def __init__(self, id, descricao, preco):
@@ -17,14 +17,9 @@ class Produto(db.Model):
         self.descricao = descricao
         self.preco = preco
 
-    def count_p(count):
-        count = int
-        count += 1
-        return count
-
 
 class Estoque(db.Model):
-    id = db.Column('id', db.Integer(), primary_key=True)
+    id = db.Column('id', db.Integer, primary_key=True)
     quantidade = db.Column(db.Integer)
 
     def __init__(self, id, quantidade):
@@ -34,8 +29,8 @@ class Estoque(db.Model):
 
 class Vendas(db.Model):
     data = db.Column(db.String(10))
-    id = db.Column('id', db.Integer(), primary_key=True)
-    quantidade = db.Column(db.Integer())
+    id = db.Column(db.Integer, primary_key=True)
+    quantidade = db.Column(db.Integer)
     preco = db.Column(db.Float)
     cpf = db.Column(db.String(14))
 
@@ -59,14 +54,9 @@ def add_p():
     if request.method == 'POST':
         produtos = Produto(request.form['id'], request.form['descricao'],
                            request.form['preco'])
-        count = count_p(id)
-        if count < 100:
-            db.session.add(produtos)
-            db.session.commit()
-            return redirect(url_for('index'))
-        else:
-            mensagem = 'maximo atingido'
-            return mensagem
+        db.session.add(produtos)
+        db.session.commit()
+        return redirect(url_for('index'))
     return render_template('cadastro_p.html')
 
 
@@ -84,7 +74,8 @@ def add_e():
 def add_v():
     if request.method == 'POST':
         vendas = Vendas(request.form['data'], request.form['id'],
-                        request.form['quantidade'], request.form['preco'],
+                        request.form['quantidade'],
+                        request.form['preco'],
                         request.form['cpf'])
         db.session.add(vendas)
         db.session.commit()

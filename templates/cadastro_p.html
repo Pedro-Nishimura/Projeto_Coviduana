@@ -10,13 +10,13 @@
 <form action="/adicionar_p" class="container" method="POST">
     <div class="row">
         <div class="id">
-            <input type="number" autocomplete="off" name="id" id="id" placeholder="codigo" class="form-control">
+            <input type="text" maxlength="2" autocomplete="off" name="id" id="id" placeholder="codigo" class="form-control">
         </div>
         <div class="descricao">
-            <input type="text" autocomplete="off" name="descricao" id="descricao" placeholder="descricao" class="form-control">
+            <input type="text" maxlength="100" autocomplete="off" name="descricao" id="descricao" placeholder="descricao" class="form-control">
         </div>
         <div class="preco">
-            <input type="text" name="preco" id="preco" placeholder="preco" class="form-control">
+            <input type="number" name="preco" id="preco" placeholder="preco" class="form-control">
         </div>
     </div>
     <br>
