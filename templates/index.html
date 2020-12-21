@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+    <html lang="pt-br">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <title>Coviduana</title>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+        <script>$(function(){
+            $("#tabela input").keyup(function(){        
+                var index = $(this).parent().index();
+                var nth = "#tabela td:nth-child("+(index+1).toString()+")";
+                var valor = $(this).val().toUpperCase();
+                $("#tabela tbody tr").show();
+                $(nth).each(function(){
+                    if($(this).text().toUpperCase().indexOf(valor) < 0){
+                        $(this).parent().hide();
+                    }
+                });
+            });
+         
+            $("#tabela input").blur(function(){
+                $(this).val("");
+            }); 
+        });
+        </script>
+    <head>
+    </head>
+    <body>
+    <h1>Página Principal</h1>
+    <div class="container">
+        <div class="row">
+            <div id="produto">
+                <a href="/adicionar_p"><button>Adicionar produto</button></a>
+                <table id="tabela">
+                    <thead>
+                    <tr>
+                        <th>codigo</th>
+                        <th>descricao |</th>
+                        <th>preco |</th>
+                        <th>acao</th>
+                    </tr>
+                    <tr>
+                        <th><input type="text" id="txtColuna1" placeholder="Buscar codigo"/></th>
+                    </tr>     
+                    </thead>
+                    <tbody>
+                        {% for p in produtos %}
+                        <tr>
+                            <td>{{p.id}}</td>
+                            <td>{{p.descricao}} </td>
+                            <td>{{p.preco}} </td>
+                            <td>
+                                <a href="/editar_p/{{p.id}}"><button>Editar produto</button></a> |
+                                <a href="/excluir_p/{{p.id}}"><button>Excluir produto</button></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <br>
+            <div id="estoque">
+                <a href="/adicionar_e"><button>Adicionar estoque</button></a> |
+                <a href="/filtro_e"><button>Filtrar estoque</button></a>
+            </div>
+            <br>
+            <div id="vendas">
+                <a href="/adicionar_v"><button>Adicionar venda</button></a>
+                <table id="tabela">
+                    <thead>
+                    <tr>
+                        <th>data</th>
+                        <th>codigo |</th>
+                        <th>quantidade |</th>
+                        <th>preco |</th>
+                        <th>cpf |</th>
+                        <th>acao</th>
+                    <tr>
+                        <th><input type="text" id="txtColuna1" placeholder="Buscar data"/></th>
+                    </tr>   
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for v in vendas %}
+                        <tr>
+                            <td>{{v.data}} </td>
+                            <td>{{v.id}} </td>
+                            <td>{{v.quantidade}} </td>
+                            <td>{{v.preco}} </td>
+                            <td>{{v.cpf}} </td>
+                            <td>
+                                <a href="/excluir_v/{{v.id}}"><button>Excluir venda</button></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </body>
+    </html>

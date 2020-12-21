@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coviduana</title>
+</head>
+<body>
+<h1 style="text-align: left;">Cadastrar produto</h1>
+<form action="/adicionar_p" class="container" method="POST">
+    <div class="row">
+        <div class="id">
+            <input type="number" autocomplete="off" name="id" id="id" placeholder="codigo" class="form-control">
+        </div>
+        <div class="descricao">
+            <input type="text" autocomplete="off" name="descricao" id="descricao" placeholder="descricao" class="form-control">
+        </div>
+        <div class="preco">
+            <input type="text" name="preco" id="preco" placeholder="preco" class="form-control">
+        </div>
+    </div>
+    <br>
+    <div class="botao">
+        <button type="submit" class="sucess">Enviar</button>
+    </div>
+</form>
+</body>
+</html>

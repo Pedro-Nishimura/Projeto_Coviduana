@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coviduana</title>
+</head>
+<body>
+<h1 style="text-align: left;">Editar produto</h1>
+<form action="/editar_p/{{ produtos.id }}" class="container" method="POST">
+    <div class="row">
+        <div class="descricao">
+            <input type="text" name="descricao" id="descricao" placeholder="descricao" class="form-control" value="{{ produtos.descricao }}">
+        </div>
+        <div class="preco">
+            <input type="text" name="preco" id="preco" placeholder="preco" class="form-control" value="{{ produtos.preco }}">
+        </div>
+    </div>
+    <br>
+    <div class="botao">
+        <button type="submit" class="sucess">Enviar</button>
+    </div>
+    <br>
+    <div class="botao">
+        <a href="/"><button>Voltar</button></a>
+    </div>
+</form>
+</body>
+</html>

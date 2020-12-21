@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coviduana</title>
+</head>
+<body>
+<h1 style="text-align: left;">Editar estoque</h1>
+<form action="/editar_e/{{ estoque.id }}" class="container" method="POST">
+    <div class="row">
+        <div class="quantidade">
+            <input type="number" name="quantidade" id="quantidade" placeholder="quantidade" class="form-control" value="{{ estoque.quantidade }}">
+        </div>
+    </div>
+    <br>
+    <div class="botao">
+        <button type="submit" class="sucess">Enviar</button>
+    </div>
+    <br>
+    <div class="botao">
+        <a href="/"><button>Voltar</button></a>
+    </div>
+</form>
+</body>
+</html>
