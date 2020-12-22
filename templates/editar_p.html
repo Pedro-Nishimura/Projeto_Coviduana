@@ -4,15 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coviduana</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+        $.ajax({
+            method: "POST",
+            url: "http://www.arcossp.com.br/arcos_novo/ws.coviduana",
+            data: {
+                descricao: "descricao",
+                preco: "preco" 
+            },
+            beforeSend : function(){
+                $("#resultado").html("EDITANDO...");
+            }
+        })
+    </script>
 </head>
 <body>
 <h1 style="text-align: left;">Editar produto</h1>
 <form action="/editar_p/{{ produtos.id }}" class="container" method="POST">
     <div class="row">
-        <div class="descricao">
+        <div id="descricao">
             <input type="text" name="descricao" id="descricao" placeholder="descricao" class="form-control" value="{{ produtos.descricao }}">
         </div>
-        <div class="preco">
+        <div id="preco">
             <input type="number" name="preco" id="preco" placeholder="preco" class="form-control" value="{{ produtos.preco }}">
         </div>
     </div>

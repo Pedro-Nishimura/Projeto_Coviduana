@@ -4,24 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coviduana</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+        $.ajax({
+            method: "POST",
+            url: "http://www.arcossp.com.br/arcos_novo/ws.coviduana",
+            data: {
+                data: "data",
+                id: "id",
+                quantidade: "quantidade",
+                preco: "preco",
+                cpf: "cpf",
+            },
+            beforeSend : function(){
+                $("#resultado").html("ENVIANDO...");
+            }
+        })
+    </script>
 </head>
 <body>
 <h1 style="text-align: left;">Cadastrar venda</h1>
 <form action="/adicionar_v" class="container" method="POST">
     <div class="row">
-        <div class="data">
+        <div id="data">
             <input type="text" maxlength="10" autocomplete="off" name="data" id="data" placeholder="data" class="form-control">
         </div>
-        <div class="id">
+        <div id="id">
             <input type="text" maxlength="2" autocomplete="off" name="id" id="id" placeholder="codigo" class="form-control">
         </div>
-        <div class="quantidade">
+        <div id="quantidade">
             <input type="number" name="quantidade" id="quantidade" placeholder="quantidade" class="form-control">
         </div>
-        <div class="preco">
+        <div id="preco">
             <input type="number" name="preco" id="preco" placeholder="preco" class="form-control">
         </div>
-        <div class="cpf">
+        <div id="cpf">
             <input type="text" maxlength="14" name="cpf" id="cpf" placeholder="cpf" class="form-control">
         </div>
     </div>
