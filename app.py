@@ -30,15 +30,17 @@ class Estoque(db.Model):
 
 
 class Vendas(db.Model):
-    data = db.Column(db.String(10))
     id = db.Column(db.Integer, primary_key=True)
+    data = db.Column(db.String(10))
+    codigo = db.Column(db.Integer)
     quantidade = db.Column(db.Integer)
     preco = db.Column(db.Float)
     cpf = db.Column(db.String(14))
 
-    def __init__(self, data, id, quantidade, preco, cpf=None):
+    def __init__(self, data, id, codigo, quantidade, preco, cpf=None):
         self.data = data
         self.id = id
+        self.codigo = codigo
         self.quantidade = quantidade
         self.preco = preco
         self.cpf = cpf
@@ -76,6 +78,7 @@ def add_e():
 def add_v():
     if request.method == 'POST':
         vendas = Vendas(request.form['data'], request.form['id'],
+                        request.form['codigo'],
                         request.form['quantidade'],
                         request.form['preco'],
                         request.form['cpf'])

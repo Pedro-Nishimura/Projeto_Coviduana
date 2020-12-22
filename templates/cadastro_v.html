@@ -12,6 +12,7 @@
             data: {
                 data: "data",
                 id: "id",
+                codigo: "codigo",
                 quantidade: "quantidade",
                 preco: "preco",
                 cpf: "cpf",
@@ -30,7 +31,10 @@
             <input type="text" maxlength="10" autocomplete="off" name="data" id="data" placeholder="data" class="form-control">
         </div>
         <div id="id">
-            <input type="text" maxlength="2" autocomplete="off" name="id" id="id" placeholder="código" class="form-control">
+            <input type="number"  autocomplete="off" name="id" id="id" placeholder="código venda" class="form-control">
+        </div>
+        <div id="codigo">
+            <input type="text" maxlength="2" autocomplete="off" name="codigo" id="codigo" placeholder="código produto" class="form-control">
         </div>
         <div id="quantidade">
             <input type="number" name="quantidade" id="quantidade" placeholder="quantidade" class="form-control">
